@@ -4,9 +4,9 @@ import { PollsController } from './polls.controller';
 import { PollsService } from './polls.service';
 import { redisModule } from '../redis/redis.module.config';
 import { PollsRepository } from './polls.repository';
-
+import { jwtModule } from '../jwt/jwt.module';
 @Module({
-  imports: [ConfigModule, redisModule],
+  imports: [ConfigModule, redisModule, jwtModule],
   controllers: [PollsController],
   providers: [PollsService, PollsRepository],
 })
