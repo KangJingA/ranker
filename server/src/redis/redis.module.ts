@@ -39,7 +39,7 @@ export class RedisModule {
   }: RedisAsyncModuleOptions): Promise<DynamicModule> {
     // the redis service
     const redisProvider = {
-      provide: IORedisKey, // token
+      provide: IORedisKey, // token, and the nane of the provider
       // this can be further refactored to use the correct syntax
       useFactory: async (...args) => { // this is the provider
         const { connectionOptions, onClientReady } = await getRedisConnection(...args);

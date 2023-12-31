@@ -14,9 +14,12 @@ export class PollsController {
   @Post()
   async create(@Body() createPollDto: CreatePollDto) {
     Logger.log('In create!');
-    const result = await this.pollsService.createPoll(createPollDto);
+    const createdPoll = await this.pollsService.createPoll(createPollDto);
 
-    return createPollDto;
+    return {
+      poll: createdPoll,
+      // accessToken
+    };
   }
 
   @Post('/join')
@@ -24,7 +27,7 @@ export class PollsController {
     Logger.log('In join!');
 
     const result = await this.pollsService.joinPoll(joinPollDto);
-    
+
     return result;
   }
 
