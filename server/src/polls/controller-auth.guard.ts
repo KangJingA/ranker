@@ -22,7 +22,7 @@ export class ControllerAuthGuard implements CanActivate {
     }
 
     this.logger.debug(`Validating auth token: ${accessToken}`);
-
+    
     // validate JWT Token
     try {
       const payload = this.jwtService.verify(accessToken); // checks that token was not modified
