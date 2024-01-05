@@ -2,7 +2,9 @@ import { Logger } from '@nestjs/common';
 import { OnGatewayInit, OnGatewayDisconnect, OnGatewayConnection, WebSocketGateway, WebSocketServer } from '@nestjs/websockets';
 import { PollsService } from '../polls.service';
 import { Namespace, Socket } from 'socket.io'
+
 // gateway for websockets
+// ws://localhost:3000/polls
 @WebSocketGateway({
   namespace: 'polls',
 })
@@ -31,5 +33,6 @@ export class PollsGateway implements OnGatewayInit {
 
     this.logger.log(`WS Client with id: ${client.id} connected!`);
     this.logger.debug(`Number of connected sockets: ${sockets.size}`);
+    this.io.emit('hello', `from ${client.id}`) // (event, args)
   }
 }
